@@ -1,0 +1,873 @@
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+calling gdevices constructor
+/home/raymundohe/PWDFT/build_sycl/pwdft (NWChemEx) - Version 1.0
+
+============================== echo of input deck ==============================
+# Input generator
+title "My Title"
+
+echo
+
+start c_atom_lda
+
+memory  1900 mb
+
+permanent_dir ./C0_A_LDA
+scratch_dir   ./C0_A_LDA
+
+charge 0
+
+geometry noautosym nocenter noautoz
+system crystal
+   lattice_vectors
+        28.3459        0.0        0.0
+            0.0    28.3459        0.0
+            0.0        0.0    28.3459
+end
+ C     0.000000   0.000000   0.000000
+end
+
+nwpw
+   monkhorst-pack 8 8 8
+   cutoff 60.0
+   mult 1
+   xc lda
+   lmbfgs grassman
+
+   2d-hcurve
+ end
+
+set nwpw:kbpp_ray     .true.
+set nwpw:kbpp_filter  .true.
+
+task pspw energy ignore
+
+================================================================================
+
+              NorthwestEx Computational Chemistry Package 1.0.0
+           --------------------------------------------------------
+
+                  Pacific Northwest National Laboratory
+                           Richland, WA 99354
+
+                         Copyright (c) 2020
+                  Pacific Northwest National Laboratory
+                       Battelle Memorial Institute
+
+        NWChemEx is an open-source computational chemistry package
+                   distributed under the terms of the
+                 Educational Community License (ECL) 2.0
+        A copy of the license is included with this distribution
+                         in the LICENSE.TXT file
+
+                             ACKNOWLEDGMENT
+                             --------------
+
+       This software and its documentation were developed at the
+       Pacific Northwest National Laboratory, a multiprogram
+       national laboratory, operated for the U.S. Department of Energy
+       by Battelle under Contract Number DE-AC05-76RL01830. Support
+       for this work was provided by the Department of Energy 
+       Office of Advanced Scientific Computing and the Office of Basic
+       Energy Sciences.
+
+       Job information
+       ---------------
+       program               = pwdft (NWChemEx)
+       build configured      = Mon Jan 09 11:41:50 2023
+       source                = /home/raymundohe/PWDFT/Nwpw
+       version               = 1.0
+       default psp libraries = /home/raymundohe/PWDFT/Nwpw/libraryps
+
+       date                  = Tue Jan 10 23:13:55 2023
+       nproc                 = 8
+       input                 = stdin
+
+
+
+First rtdbstr={"charge":0,"current_task":"task pspw energy ignore","dbname":"c_atom_lda","driver":null,"foundtask":true,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"nwinput_cur":38,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[60.0,120.0],"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","scratch_dir":"./C0_A_LDA","title":"My Title"}
+First task=1
+
+
+Running staged energy optimization - lowlevel_rtdbstr = {"charge":0,"current_task":"energy","dbname":"c_atom_lda","driver":null,"foundtask":true,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"nwinput_cur":38,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[15.0,30.0],"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","scratch_dir":"./C0_A_LDA","title":"My Title"}
+
+          *****************************************************
+          *                                                   *
+          *               PWDFT PSPW Calculation              *
+          *                                                   *
+          *  [ (Grassmann/Stiefel manifold implementation) ]  *
+          *  [              C++ implementation             ]  *
+          *                                                   *
+          *              version #7.00   02/27/21             *
+          *                                                   *
+          *    This code was developed by Eric J. Bylaska,    *
+          *    Abhishek Bagusetty, David H. Bross, ...        *
+          *                                                   *
+          *****************************************************
+          >>> job started at       Tue Jan 10 23:13:55 2023 <<<
+
+ psp_library: /home/raymundohe/PWDFT/Nwpw/libraryps
+
+
+ generating 1d pseudopotential file: ./C0_A_LDA/C.psp
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+
+ writing formatted psp filename: ./C0_A_LDA/C.vpp
+ generating random psi from scratch
+ Warning - Gram-Schmidt being performed on psi2
+         - exact norm = 4 norm=5.62467 corrected norm=4 (error=1.62467)
+
+          ==============  summary of input  ==================
+
+ input psi filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ number of processors used: 8
+ processor grid           : 8 x1
+ parallel mapping         : 2d-hcurve
+ parallel mapping         : balanced
+
+ options:
+   boundary conditions  = periodic
+   electron spin        = restricted
+   exchange-correlation = LDA (Vosko et al) parameterization
+
+ elements involved in the cluster:
+      1: C   valence charge =  4.0  lmax =2
+             comment = Parameterized (J.Phys.Chem., vol 100, page 6966) Hamman psp 
+             pseudopotential type            =  0
+             highest angular component       =  2
+             local potential used            =  2
+             number of non-local projections =  4
+             cutoff =    0.800   0.850   0.850
+
+ total charge =   0.000
+
+ atom composition:
+   C : 1
+
+ initial ion positions (au):
+   1 C	(    0.00000    0.00000    0.00000 ) - atomic mass = 12.000
+   G.C.	(    0.00000    0.00000    0.00000 )
+ C.O.M.	(    0.00000    0.00000    0.00000 )
+
+ real space Electric field:
+     Electric Field (au) = (   0.00000    0.00000    0.00000 )
+             Center (au) = (   0.00000    0.00000    0.00000 )
+
+
+ number of electrons: spin up =     2 (   2 per task) down =     2 (   2 per task)
+
+ supercell:
+      volume =  153697.66
+      lattice:    a1 = <   53.566    0.000    0.000 >
+                  a2 = <    0.000   53.566    0.000 >
+                  a3 = <    0.000    0.000   53.566 >
+      reciprocal: b1 = <    0.117    0.000    0.000 >
+                  b2 = <    0.000    0.117    0.000 >
+                  b3 = <    0.000    0.000    0.117 >
+      lattice:    a =      53.566 b =     53.566 c =      53.566
+                  alpha =  90.000 beta =  90.000 gamma =  90.000
+      density cutoff = 30.000 fft = 140 x  140 x  140  (  602739 waves    75342 per task)
+      wavefnc cutoff = 15.000 fft = 140 x  140 x  140  (  213261 waves    26662 per task)
+
+ Ewald parameters:
+      energy cutoff =  30.000 fft = 140 x  140 x  140  (  602739 waves    75343 per task)
+      Ewald summation: cut radius =  17.051 and   1
+                       Mandelung Wigner-Seitz =  1.76011888 (alpha =  2.83729748 rs = 33.22968441)
+
+ technical parameters:
+      fixed step: time step =        5.80  ficticious mass =   400000.00
+      tolerance =   1.000e-07 (energy)    1.000e-07 (density)    1.000e-04 (ion)
+      max iterations =       1000 (   10 inner   100 outer)
+      minimizer = Grassmann lmbfgs
+
+
+
+     ================== Grassmann lmbfgs iteration ==================
+          >>> iteration started at Tue Jan 10 23:14:02 2023  <<<
+     iter.                 Energy          DeltaE        DeltaRho
+     ----------------------------------------------------------------
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+        - 10 steepest descent iterations performed
+        10      -1.913499552770e+00   -1.190956e+00    3.451448e-02
+        20      -5.243462358909e+00   -2.366644e-02    9.056721e-05
+        30      -5.304051096110e+00   -1.983643e-03    2.713895e-05
+        40      -5.307356280368e+00   -2.764084e-05    3.384266e-08
+        50      -5.307439884689e+00   -1.664099e-06    1.214506e-09
+        60      -5.307444632315e+00   -1.550546e-07    3.561165e-10
+        70      -5.307444726114e+00   -9.379966e-08    2.311526e-10
+     *** tolerance ok. iteration terminated
+          >>> iteration ended at   Tue Jan 10 23:14:20 2023  <<<
+
+     ==============  energy results (Molecule object)  ==============
+
+
+ number of electrons: spin up=     2.00000  down=     2.00000 (real space)
+
+
+ total     energy    :   -5.3074447261e+00 (   -5.30744e+00 /ion)
+ total orbital energy:   -1.3641896270e+00 (   -6.82095e-01 /electron)
+ hartree energy      :    3.9488734144e+00 (    1.97444e+00 /electron)
+ exc-corr energy     :   -1.3989010468e+00 (   -6.99451e-01 /electron)
+ ion-ion energy      :   -4.2374615723e-01 (   -4.23746e-01 /ion)
+
+ kinetic (planewave) :    3.0046187224e+00 (    1.50231e+00 /electron)
+ V_local (planewave) :   -1.0803460069e+01 (   -5.40173e+00 /electron)
+ V_nl    (planewave) :    3.6517040985e-01 (    1.82585e-01 /electron)
+ V_Coul  (planewave) :    7.8977468287e+00 (    3.94887e+00 /electron)
+ V_xc    (planewave) :   -1.8282655193e+00 (   -9.14133e-01 /electron)
+ Viral Coefficient   :   -1.4540308615e+00
+
+ orbital energy:
+    -1.7670923e-01 (  -4.809eV)
+    -5.0538559e-01 ( -13.752eV)
+
+== Center of Charge ==
+
+spin up    = (    0.0001     0.0001    -0.0003 )
+spin down  = (    0.0001     0.0001    -0.0003 )
+     total = (    0.0001     0.0001    -0.0003 )
+ionic      = (    0.0000     0.0000     0.0000 )
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   = (   -0.0005    -0.0005     0.0014 ) au
+|mu| =      0.0016 au (     0.0040 Debye )
+
+ output psi to filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ -----------------
+ cputime in seconds
+ prologue    : 5.145e+00
+ main loop   : 1.542e+01
+ epilogue    : 8.526e-01
+ total       : 2.142e+01
+ cputime/step: 7.105e-02 ( 217 evaluations, 61 linesearches)
+
+ Time spent doing      total        step             percent
+ total time            2.913822e+01 1.342775e-01     100.00%
+ total FFT time        7.816108e+00 3.601893e-02      26.82%
+ lagrange multipliers  2.451974e-01 1.129942e-03       0.84%
+ exchange correlation  1.844520e+00 8.500094e-03       6.33%
+ local potentials      9.879600e-04 4.552811e-06       0.00%
+ non-local potentials  2.376048e+00 1.094953e-02       8.15%
+ ffm_dgemm             6.823214e-01 3.144338e-03       2.34%
+ fmf_dgemm             2.062142e+00 9.502961e-03       7.08%
+ m_diagonalize         4.063398e-01 1.872534e-03       1.39%
+ mmm_multiply          8.766805e-03 4.040002e-05       0.03%
+
+ >>> job completed at     Tue Jan 10 23:14:21 2023 <<<
+
+Running staged energy optimization - lowlevel_rtdbstr = {"charge":0,"current_task":"energy","dbname":"c_atom_lda","driver":null,"foundtask":true,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"nwinput_cur":38,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[30.0,60.0],"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","scratch_dir":"./C0_A_LDA","title":"My Title"}
+
+          *****************************************************
+          *                                                   *
+          *               PWDFT PSPW Calculation              *
+          *                                                   *
+          *  [ (Grassmann/Stiefel manifold implementation) ]  *
+          *  [              C++ implementation             ]  *
+          *                                                   *
+          *              version #7.00   02/27/21             *
+          *                                                   *
+          *    This code was developed by Eric J. Bylaska,    *
+          *    Abhishek Bagusetty, David H. Bross, ...        *
+          *                                                   *
+          *****************************************************
+          >>> job started at       Tue Jan 10 23:14:21 2023 <<<
+
+ psp_library: /home/raymundohe/PWDFT/Nwpw/libraryps
+
+
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=2.633787e+00
+ierr=10 adiff=3.224796e+00
+ierr=10 adiff=3.972822e+00
+ierr=10 adiff=4.410694e+00
+ierr=10 adiff=4.890857e+00
+ierr=10 adiff=5.410450e+00
+ierr=10 adiff=5.964098e+00
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+
+ writing formatted psp filename: ./C0_A_LDA/C.vpp
+ psi grids are being converted: 
+ -----------------------------: 
+ converting .... psi:1 spin:1
+ converting .... psi:2 spin:1
+
+ input psi exists, reading from file: ./C0_A_LDA/c_atom_lda.movecs
+
+          ==============  summary of input  ==================
+
+ input psi filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ number of processors used: 8
+ processor grid           : 8 x1
+ parallel mapping         : 2d-hcurve
+ parallel mapping         : balanced
+
+ options:
+   boundary conditions  = periodic
+   electron spin        = restricted
+   exchange-correlation = LDA (Vosko et al) parameterization
+
+ elements involved in the cluster:
+      1: C   valence charge =  4.0  lmax =2
+             comment = Parameterized (J.Phys.Chem., vol 100, page 6966) Hamman psp 
+             pseudopotential type            =  0
+             highest angular component       =  2
+             local potential used            =  2
+             number of non-local projections =  4
+             cutoff =    0.800   0.850   0.850
+
+ total charge =   0.000
+
+ atom composition:
+   C : 1
+
+ initial ion positions (au):
+   1 C	(    0.00000    0.00000    0.00000 ) - atomic mass = 12.000
+   G.C.	(    0.00000    0.00000    0.00000 )
+ C.O.M.	(    0.00000    0.00000    0.00000 )
+
+ real space Electric field:
+     Electric Field (au) = (   0.00000    0.00000    0.00000 )
+             Center (au) = (   0.00000    0.00000    0.00000 )
+
+
+ number of electrons: spin up =     2 (   2 per task) down =     2 (   2 per task)
+
+ supercell:
+      volume =  153697.66
+      lattice:    a1 = <   53.566    0.000    0.000 >
+                  a2 = <    0.000   53.566    0.000 >
+                  a3 = <    0.000    0.000   53.566 >
+      reciprocal: b1 = <    0.117    0.000    0.000 >
+                  b2 = <    0.000    0.117    0.000 >
+                  b3 = <    0.000    0.000    0.117 >
+      lattice:    a =      53.566 b =     53.566 c =      53.566
+                  alpha =  90.000 beta =  90.000 gamma =  90.000
+      density cutoff = 60.000 fft = 192 x  192 x  192  ( 1705776 waves   213222 per task)
+      wavefnc cutoff = 30.000 fft = 192 x  192 x  192  (  602739 waves    75342 per task)
+
+ Ewald parameters:
+      energy cutoff =  60.000 fft = 192 x  192 x  192  ( 1705776 waves   213222 per task)
+      Ewald summation: cut radius =  17.051 and   1
+                       Mandelung Wigner-Seitz =  1.76011888 (alpha =  2.83729748 rs = 33.22968441)
+
+ technical parameters:
+      fixed step: time step =        5.80  ficticious mass =   400000.00
+      tolerance =   1.000e-07 (energy)    1.000e-07 (density)    1.000e-04 (ion)
+      max iterations =       1000 (   10 inner   100 outer)
+      minimizer = Grassmann lmbfgs
+
+
+
+     ================== Grassmann lmbfgs iteration ==================
+          >>> iteration started at Tue Jan 10 23:14:36 2023  <<<
+     iter.                 Energy          DeltaE        DeltaRho
+     ----------------------------------------------------------------
+        - 10 steepest descent iterations performed
+        10      -5.315246681680e+00   -1.497055e-06    3.241037e-08
+        20      -5.315250018339e+00   -9.277449e-08    1.101595e-10
+     *** tolerance ok. iteration terminated
+          >>> iteration ended at   Tue Jan 10 23:14:50 2023  <<<
+
+     ==============  energy results (Molecule object)  ==============
+
+
+ number of electrons: spin up=     2.00000  down=     2.00000 (real space)
+
+
+ total     energy    :   -5.3152500183e+00 (   -5.31525e+00 /ion)
+ total orbital energy:   -1.3625169990e+00 (   -6.81258e-01 /electron)
+ hartree energy      :    3.9593051501e+00 (    1.97965e+00 /electron)
+ exc-corr energy     :   -1.4019069769e+00 (   -7.00953e-01 /electron)
+ ion-ion energy      :   -4.2374615723e-01 (   -4.23746e-01 /ion)
+
+ kinetic (planewave) :    3.0369900975e+00 (    1.51850e+00 /electron)
+ V_local (planewave) :   -1.0834057184e+01 (   -5.41703e+00 /electron)
+ V_nl    (planewave) :    3.4816505188e-01 (    1.74083e-01 /electron)
+ V_Coul  (planewave) :    7.9186103003e+00 (    3.95931e+00 /electron)
+ V_xc    (planewave) :   -1.8322252650e+00 (   -9.16113e-01 /electron)
+ Viral Coefficient   :   -1.4486405801e+00
+
+ orbital energy:
+    -1.7768651e-01 (  -4.835eV)
+    -5.0357199e-01 ( -13.703eV)
+
+== Center of Charge ==
+
+spin up    = (    0.0001     0.0001    -0.0002 )
+spin down  = (    0.0001     0.0001    -0.0002 )
+     total = (    0.0001     0.0001    -0.0002 )
+ionic      = (    0.0000     0.0000     0.0000 )
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   = (   -0.0003    -0.0002     0.0006 ) au
+|mu| =      0.0007 au (     0.0019 Debye )
+
+ output psi to filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ -----------------
+ cputime in seconds
+ prologue    : 1.422e+01
+ main loop   : 1.400e+01
+ epilogue    : 5.520e+00
+ total       : 3.374e+01
+ cputime/step: 2.059e-01 ( 68 evaluations, 18 linesearches)
+
+ Time spent doing      total        step             percent
+ total time            6.379993e+01 9.382342e-01     100.00%
+ total FFT time        1.617922e+01 2.379298e-01      25.36%
+ lagrange multipliers  2.804377e-01 4.124084e-03       0.44%
+ exchange correlation  3.353866e+00 4.932155e-02       5.26%
+ local potentials      4.188010e-03 6.158838e-05       0.01%
+ non-local potentials  3.528187e+00 5.188510e-02       5.53%
+ ffm_dgemm             9.289460e-01 1.366097e-02       1.46%
+ fmf_dgemm             2.435308e+00 3.581335e-02       3.82%
+ m_diagonalize         4.070320e-01 5.985765e-03       0.64%
+ mmm_multiply          9.317897e-03 1.370279e-04       0.01%
+
+ >>> job completed at     Tue Jan 10 23:14:55 2023 <<<
+
+Running staged energy optimization - lowlevel_rtdbstr = {"charge":0,"current_task":"energy","dbname":"c_atom_lda","driver":null,"foundtask":true,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"nwinput_cur":38,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[45.0,90.0],"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","scratch_dir":"./C0_A_LDA","title":"My Title"}
+
+          *****************************************************
+          *                                                   *
+          *               PWDFT PSPW Calculation              *
+          *                                                   *
+          *  [ (Grassmann/Stiefel manifold implementation) ]  *
+          *  [              C++ implementation             ]  *
+          *                                                   *
+          *              version #7.00   02/27/21             *
+          *                                                   *
+          *    This code was developed by Eric J. Bylaska,    *
+          *    Abhishek Bagusetty, David H. Bross, ...        *
+          *                                                   *
+          *****************************************************
+          >>> job started at       Tue Jan 10 23:14:55 2023 <<<
+
+ psp_library: /home/raymundohe/PWDFT/Nwpw/libraryps
+
+
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+
+ writing formatted psp filename: ./C0_A_LDA/C.vpp
+ psi grids are being converted: 
+ -----------------------------: 
+ converting .... psi:1 spin:1
+ converting .... psi:2 spin:1
+
+ input psi exists, reading from file: ./C0_A_LDA/c_atom_lda.movecs
+
+          ==============  summary of input  ==================
+
+ input psi filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ number of processors used: 8
+ processor grid           : 8 x1
+ parallel mapping         : 2d-hcurve
+ parallel mapping         : balanced
+
+ options:
+   boundary conditions  = periodic
+   electron spin        = restricted
+   exchange-correlation = LDA (Vosko et al) parameterization
+
+ elements involved in the cluster:
+      1: C   valence charge =  4.0  lmax =2
+             comment = Parameterized (J.Phys.Chem., vol 100, page 6966) Hamman psp 
+             pseudopotential type            =  0
+             highest angular component       =  2
+             local potential used            =  2
+             number of non-local projections =  4
+             cutoff =    0.800   0.850   0.850
+
+ total charge =   0.000
+
+ atom composition:
+   C : 1
+
+ initial ion positions (au):
+   1 C	(    0.00000    0.00000    0.00000 ) - atomic mass = 12.000
+   G.C.	(    0.00000    0.00000    0.00000 )
+ C.O.M.	(    0.00000    0.00000    0.00000 )
+
+ real space Electric field:
+     Electric Field (au) = (   0.00000    0.00000    0.00000 )
+             Center (au) = (   0.00000    0.00000    0.00000 )
+
+
+ number of electrons: spin up =     2 (   2 per task) down =     2 (   2 per task)
+
+ supercell:
+      volume =  153697.66
+      lattice:    a1 = <   53.566    0.000    0.000 >
+                  a2 = <    0.000   53.566    0.000 >
+                  a3 = <    0.000    0.000   53.566 >
+      reciprocal: b1 = <    0.117    0.000    0.000 >
+                  b2 = <    0.000    0.117    0.000 >
+                  b3 = <    0.000    0.000    0.117 >
+      lattice:    a =      53.566 b =     53.566 c =      53.566
+                  alpha =  90.000 beta =  90.000 gamma =  90.000
+      density cutoff = 90.000 fft = 240 x  240 x  240  ( 3134071 waves   391758 per task)
+      wavefnc cutoff = 45.000 fft = 240 x  240 x  240  ( 1108211 waves   138526 per task)
+
+ Ewald parameters:
+      energy cutoff =  90.000 fft = 240 x  240 x  240  ( 3134071 waves   391759 per task)
+      Ewald summation: cut radius =  17.051 and   1
+                       Mandelung Wigner-Seitz =  1.76011888 (alpha =  2.83729748 rs = 33.22968441)
+
+ technical parameters:
+      fixed step: time step =        5.80  ficticious mass =   400000.00
+      tolerance =   1.000e-07 (energy)    1.000e-07 (density)    1.000e-04 (ion)
+      max iterations =       1000 (   10 inner   100 outer)
+      minimizer = Grassmann lmbfgs
+
+
+
+     ================== Grassmann lmbfgs iteration ==================
+          >>> iteration started at Tue Jan 10 23:15:55 2023  <<<
+     iter.                 Energy          DeltaE        DeltaRho
+     ----------------------------------------------------------------
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+        - 10 steepest descent iterations performed
+        10      -5.317438902784e+00   -1.544708e-07    4.459467e-09
+        20      -5.317439237776e+00   -9.012674e-08    9.208262e-10
+     *** tolerance ok. iteration terminated
+          >>> iteration ended at   Tue Jan 10 23:16:18 2023  <<<
+
+     ==============  energy results (Molecule object)  ==============
+
+
+ number of electrons: spin up=     2.00000  down=     2.00000 (real space)
+
+
+ total     energy    :   -5.3174392378e+00 (   -5.31744e+00 /ion)
+ total orbital energy:   -1.3622339852e+00 (   -6.81117e-01 /electron)
+ hartree energy      :    3.9620869323e+00 (    1.98104e+00 /electron)
+ exc-corr energy     :   -1.4028808685e+00 (   -7.01440e-01 /electron)
+ ion-ion energy      :   -4.2374615723e-01 (   -4.23746e-01 /ion)
+
+ kinetic (planewave) :    3.0452619063e+00 (    1.52263e+00 /electron)
+ V_local (planewave) :   -1.0842007798e+01 (   -5.42100e+00 /electron)
+ V_nl    (planewave) :    3.4384674716e-01 (    1.71923e-01 /electron)
+ V_Coul  (planewave) :    7.9241738647e+00 (    3.96209e+00 /electron)
+ V_xc    (planewave) :   -1.8335087055e+00 (   -9.16754e-01 /electron)
+ Viral Coefficient   :   -1.4473290072e+00
+
+ orbital energy:
+    -1.7797012e-01 (  -4.843eV)
+    -5.0314688e-01 ( -13.691eV)
+
+== Center of Charge ==
+
+spin up    = (    0.0000     0.0000    -0.0001 )
+spin down  = (    0.0000     0.0000    -0.0001 )
+     total = (    0.0000     0.0000    -0.0001 )
+ionic      = (    0.0000     0.0000     0.0000 )
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   = (   -0.0002    -0.0002     0.0005 ) au
+|mu| =      0.0005 au (     0.0013 Debye )
+
+ output psi to filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ -----------------
+ cputime in seconds
+ prologue    : 5.919e+01
+ main loop   : 2.326e+01
+ epilogue    : 2.338e+01
+ total       : 1.058e+02
+ cputime/step: 4.473e-01 ( 52 evaluations, 13 linesearches)
+
+ Time spent doing      total        step             percent
+ total time            1.701257e+02 3.271648e+00     100.00%
+ total FFT time        3.118190e+01 5.996519e-01      18.33%
+ lagrange multipliers  3.165227e-01 6.086976e-03       0.19%
+ exchange correlation  5.631751e+00 1.083029e-01       3.31%
+ local potentials      1.233034e-02 2.371220e-04       0.01%
+ non-local potentials  4.830877e+00 9.290148e-02       2.84%
+ ffm_dgemm             1.135821e+00 2.184271e-02       0.67%
+ fmf_dgemm             2.744515e+00 5.277914e-02       1.61%
+ m_diagonalize         4.075571e-01 7.837636e-03       0.24%
+ mmm_multiply          9.919098e-03 1.907519e-04       0.01%
+
+ >>> job completed at     Tue Jan 10 23:16:42 2023 <<<
+
+Running energy calculation - rtdbstr = {"charge":0,"current_task":"task pspw energy ignore","dbname":"c_atom_lda","driver":null,"foundtask":true,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"nwinput_cur":38,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[60.0,120.0],"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","scratch_dir":"./C0_A_LDA","title":"My Title"}
+
+          *****************************************************
+          *                                                   *
+          *               PWDFT PSPW Calculation              *
+          *                                                   *
+          *  [ (Grassmann/Stiefel manifold implementation) ]  *
+          *  [              C++ implementation             ]  *
+          *                                                   *
+          *              version #7.00   02/27/21             *
+          *                                                   *
+          *    This code was developed by Eric J. Bylaska,    *
+          *    Abhishek Bagusetty, David H. Bross, ...        *
+          *                                                   *
+          *****************************************************
+          >>> job started at       Tue Jan 10 23:16:42 2023 <<<
+
+ psp_library: /home/raymundohe/PWDFT/Nwpw/libraryps
+
+
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+ierr=10 adiff=4.686757e-01
+ierr=10 adiff=4.268053e-01
+Into psi_alloc, tile_factor = 1 ndev_mem=2
+
+ writing formatted psp filename: ./C0_A_LDA/C.vpp
+ psi grids are being converted: 
+ -----------------------------: 
+ converting .... psi:1 spin:1
+ converting .... psi:2 spin:1
+
+ input psi exists, reading from file: ./C0_A_LDA/c_atom_lda.movecs
+
+          ==============  summary of input  ==================
+
+ input psi filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ number of processors used: 8
+ processor grid           : 8 x1
+ parallel mapping         : 2d-hcurve
+ parallel mapping         : balanced
+
+ options:
+   boundary conditions  = periodic
+   electron spin        = restricted
+   exchange-correlation = LDA (Vosko et al) parameterization
+
+ elements involved in the cluster:
+      1: C   valence charge =  4.0  lmax =2
+             comment = Parameterized (J.Phys.Chem., vol 100, page 6966) Hamman psp 
+             pseudopotential type            =  0
+             highest angular component       =  2
+             local potential used            =  2
+             number of non-local projections =  4
+             cutoff =    0.800   0.850   0.850
+
+ total charge =   0.000
+
+ atom composition:
+   C : 1
+
+ initial ion positions (au):
+   1 C	(    0.00000    0.00000    0.00000 ) - atomic mass = 12.000
+   G.C.	(    0.00000    0.00000    0.00000 )
+ C.O.M.	(    0.00000    0.00000    0.00000 )
+
+ real space Electric field:
+     Electric Field (au) = (   0.00000    0.00000    0.00000 )
+             Center (au) = (   0.00000    0.00000    0.00000 )
+
+
+ number of electrons: spin up =     2 (   2 per task) down =     2 (   2 per task)
+
+ supercell:
+      volume =  153697.66
+      lattice:    a1 = <   53.566    0.000    0.000 >
+                  a2 = <    0.000   53.566    0.000 >
+                  a3 = <    0.000    0.000   53.566 >
+      reciprocal: b1 = <    0.117    0.000    0.000 >
+                  b2 = <    0.000    0.117    0.000 >
+                  b3 = <    0.000    0.000    0.117 >
+      lattice:    a =      53.566 b =     53.566 c =      53.566
+                  alpha =  90.000 beta =  90.000 gamma =  90.000
+      density cutoff =120.000 fft = 270 x  270 x  270  ( 4825199 waves   603149 per task)
+      wavefnc cutoff = 60.000 fft = 270 x  270 x  270  ( 1705776 waves   213222 per task)
+
+ Ewald parameters:
+      energy cutoff = 120.000 fft = 270 x  270 x  270  ( 4825199 waves   603150 per task)
+      Ewald summation: cut radius =  17.051 and   1
+                       Mandelung Wigner-Seitz =  1.76011888 (alpha =  2.83729748 rs = 33.22968441)
+
+ technical parameters:
+      fixed step: time step =        5.80  ficticious mass =   400000.00
+      tolerance =   1.000e-07 (energy)    1.000e-07 (density)    1.000e-04 (ion)
+      max iterations =       1000 (   10 inner   100 outer)
+      minimizer = Grassmann lmbfgs
+
+
+
+     ================== Grassmann lmbfgs iteration ==================
+          >>> iteration started at Tue Jan 10 23:18:30 2023  <<<
+     iter.                 Energy          DeltaE        DeltaRho
+     ----------------------------------------------------------------
+ierr=10 adiff=4.614000e-01
+        - 10 steepest descent iterations performed
+        10      -5.317486335679e+00   -9.264769e-08    4.258846e-10
+     *** tolerance ok. iteration terminated
+          >>> iteration ended at   Tue Jan 10 23:18:45 2023  <<<
+
+     ==============  energy results (Molecule object)  ==============
+
+
+ number of electrons: spin up=     2.00000  down=     2.00000 (real space)
+
+
+ total     energy    :   -5.3174863357e+00 (   -5.31749e+00 /ion)
+ total orbital energy:   -1.3622743977e+00 (   -6.81137e-01 /electron)
+ hartree energy      :    3.9620957013e+00 (    1.98105e+00 /electron)
+ exc-corr energy     :   -1.4028873702e+00 (   -7.01444e-01 /electron)
+ ion-ion energy      :   -4.2374615723e-01 (   -4.23746e-01 /ion)
+
+ kinetic (planewave) :    3.0453118781e+00 (    1.52266e+00 /electron)
+ V_local (planewave) :   -1.0842065636e+01 (   -5.42103e+00 /electron)
+ V_nl    (planewave) :    3.4380524827e-01 (    1.71903e-01 /electron)
+ V_Coul  (planewave) :    7.9241914027e+00 (    3.96210e+00 /electron)
+ V_xc    (planewave) :   -1.8335172908e+00 (   -9.16759e-01 /electron)
+ Viral Coefficient   :   -1.4473349372e+00
+
+ orbital energy:
+    -1.7798898e-01 (  -4.843eV)
+    -5.0314822e-01 ( -13.691eV)
+
+== Center of Charge ==
+
+spin up    = (    0.0000     0.0000    -0.0001 )
+spin down  = (    0.0000     0.0000    -0.0001 )
+     total = (    0.0000     0.0000    -0.0001 )
+ionic      = (    0.0000     0.0000     0.0000 )
+
+== Molecular Dipole wrt Center of Mass ==
+
+mu   = (   -0.0002    -0.0002     0.0005 ) au
+|mu| =      0.0005 au (     0.0013 Debye )
+
+ output psi to filename: ./C0_A_LDA/c_atom_lda.movecs
+
+ -----------------
+ cputime in seconds
+ prologue    : 1.080e+02
+ main loop   : 1.495e+01
+ epilogue    : 4.320e+01
+ total       : 1.661e+02
+ cputime/step: 6.501e-01 ( 23 evaluations, 4 linesearches)
+
+ Time spent doing      total        step             percent
+ total time            3.364614e+02 1.462876e+01     100.00%
+ total FFT time        4.099815e+01 1.782528e+00      12.19%
+ lagrange multipliers  3.573645e-01 1.553759e-02       0.11%
+ exchange correlation  7.063761e+00 3.071201e-01       2.10%
+ local potentials      2.567130e-02 1.116143e-03       0.01%
+ non-local potentials  5.677879e+00 2.468643e-01       1.69%
+ ffm_dgemm             1.225273e+00 5.327274e-02       0.36%
+ fmf_dgemm             2.854144e+00 1.240932e-01       0.85%
+ m_diagonalize         4.077264e-01 1.772724e-02       0.12%
+ mmm_multiply          1.012661e-02 4.402873e-04       0.00%
+
+ >>> job completed at     Tue Jan 10 23:19:28 2023 <<<
+
+Next rtdbstr={"charge":0,"current_task":"task pspw energy ignore","dbname":"c_atom_lda","driver":null,"foundtask":false,"geometries":{"geometry":{"autosym":0,"autoz":0,"center":0,"charges":[6.0],"conv":1.88972598858,"coords":[0.0,0.0,0.0],"masses":[12.0],"nion":1,"symbols":["C"],"unita":[53.56598389968982,0.0,0.0,0.0,53.56598389968982,0.0,0.0,0.0,53.56598389968982],"velocities":[0.0,0.0,0.0]}},"geometry":null,"nwinput_cur":40,"nwinput_lines":["","title \"My Title\"","","echo","","start c_atom_lda","","memory  1900 mb","","permanent_dir ./C0_A_LDA","scratch_dir   ./C0_A_LDA","","charge 0","","geometry noautosym nocenter noautoz","system crystal","   lattice_vectors","        28.3459        0.0        0.0","            0.0    28.3459        0.0","            0.0        0.0    28.3459","end"," C     0.000000   0.000000   0.000000","end","","nwpw","   monkhorst-pack 8 8 8","   cutoff 60.0","   mult 1","   xc lda","   lmbfgs grassman","","   2d-hcurve"," end","","set nwpw:kbpp_ray     .true.","set nwpw:kbpp_filter  .true.","","task pspw energy ignore","",""],"nwinput_nlines":40,"nwpw":{"cutoff":[60.0,120.0],"dipole":[-0.00018854013050526144,-0.00016150568885838992,0.00046575796859887626],"dipole_magnitude":0.0005277896869567611,"initialize_wavefunction":null,"mapping":3,"minimizer":2,"xc":"lda"},"nwpw:kbpp_filter":".true.","nwpw:kbpp_ray":".true.","permanent_dir":"./C0_A_LDA","psp_library_dir":"","pspw":{"eigenvalues":[-0.1779889819051775,-0.503148216962161],"energies":[-5.31748633567872,-1.3622743977346772,3.962095701333429,-1.4028873701709974,-0.42374615723200404,3.0453118780700965,-10.842065635946556,0.3438052482675468,7.924191402666858,-1.8335172907923865,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"energy":-5.31748633567872},"scratch_dir":"./C0_A_LDA","title":"My Title"}
+Next task =0
+
+writing rtdbjson = ./C0_A_LDA/c_atom_lda.json
+ierr=10 adiff=4.614000e-01
+EMU: *** Error --------------------------------------------------------------------------
+Received signal 11 SIGSEGV. Terminating.
+
+ierr=10 adiff=4.614000e-01
+EMU: *** Error --------------------------------------------------------------------------
+Received signal 11 SIGSEGV. Terminating.
+
+ierr=10 adiff=4.614000e-01
